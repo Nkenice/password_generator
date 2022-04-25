@@ -1,58 +1,60 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-const getPasswordLength = () => {
-  return 10;
-};
+function generatePassword() {
+  // passwordLength
+  const getPasswordLength = prompt("Please choose a number between 8 and 128)");
 
-// Criteria Values
+  /*Verify if chosen lenght is greater or equal to 8 and less than or equal to 128 */
+  if (num <= 128 && num >= 8) {
+    //Create object of array to store the true / false based on teh user input
+    const password = [
+      { lowerCase: confirm("Add Lowercase?") },
 
-/* const getPasswordCriteria = () => {
-  return [
-    "abcdefghijklmnopqrstuvwxyz",
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    "0123456789",
-    " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~",
-  ];
-}; */
+      { upperCase: confirm("Add Uppercase?") },
 
-const lowercaseLetters = ["abcdefghijklmnopqrstuvwxyz"];
-const uppercaseLetters = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-const numbers = ["0123456789"];
-const specialCharacters = ["!#$%&'()*+,-./:;<=>?@[]^_`{|}~`"];
+      { Number: confirm("Add Number?") },
 
-const createRandomPassword = () => {
-  // return "kdUE28(@d0";
-};
+      { specialCharacter: confirm("Add Special Character?") },
+    ];
 
-// main function to generate the random password
-const generatePassword = () => {
-  /* // get the password length
-  const passwordLength = getPasswordLength();
+    //Criteria Values
 
-  // get the password criteria
-  const passwordCriteria = getPasswordCriteria();
-
-  // create random password
-  const password = createRandomPassword(passwordLength, passwordCriteria);
-
-  return password; */
-
-  // Getting the Input HTML element, and storing it in a variable.
-  const numberInput = document.querySelector("#number-input");
-
-  if (numberInput.value < 8 || numberInput.value > 128) {
-    window.alert("Invalid Password Length");
-  }
-};
-
-// Write password to the #password input
-const writePassword = () => {
-  const password = generatePassword();
-  const passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-};
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+    * const getPasswordCriteria = () => {
+      return [
+        "abcdefghijklmnopqrstuvwxyz",
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "0123456789",
+        " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~",
+      ];
+    }; 
+    
+    const lowercaseLetters = ["abcdefghijklmnopqrstuvwxyz"];
+    const uppercaseLetters = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+    const numbers = ["0123456789"];
+    const specialCharacters = ["!#$%&'()*+,-./:;<=>?@[]^_`{|}~`"];
+    
+    const createRandomPassword = () => {
+      // return "kdUE28(@d0";
+    };
+    
+    // main function to generate the random password
+    const generatePassword = () => {
+      passwordValue='';
+      /* // get the password length
+      const passwordLength = getPasswordLength();
+    
+      // get the password criteria
+      const passwordCriteria = getPasswordCriteria();
+    
+      // create random password
+      const password = createRandomPassword(passwordLength, passwordCriteria);
+    
+      return password; */
+    
+     
+    
+    // Add event listener to generate button
+    generateBtn.addEventListener("click", writePassword);
+    
+    
