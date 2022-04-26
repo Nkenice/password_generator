@@ -3,54 +3,90 @@ const generateBtn = document.querySelector("#generate");
 
 //Get password length
 const getPasswordLength = () => {
-  const len = prompt("Enter your preferred password length");
-  if (len == null || len == "") {
+  const length = prompt("Enter password length");
+  if (length == null || length == "") {
     alert("Field can't be empty");
     getPasswordLength();
   }
-  if (isNaN(len)) {
+  if (isNaN(length)) {
     alert("You must input a number!");
     getPasswordLength();
   }
-  if (len < 8 || len > 128) {
-    alert("length should be between 8 and 128");
+  if (length > 128 || length < 8) {
+    alert("please choose a number between 8 and 128");
     getPasswordLength();
   }
-  console.log(len);
-  return len;
+  console.log(length);
+  return length;
 };
 
 //Password Criteria
 const getPasswordCriteria = () => {
-  //ask user to confirm their password
-  const hasUpper = confirm("To include uppercase, press 'OK'?");
-  const hasLower = confirm("To include lower case, press 'OK'?");
-  const hasNumbers = confirm("To include numbers, press 'OK'?");
-  const hasSpecial = confirm("To include special characters, press 'OK'?");
+  //ask user to confirm their password criteria
+  const hasUpperCase = confirm("To include uppercase, press 'OK'");
+  const hasLowerCase = confirm("To include lower case, press 'OK'");
+  const hasNumbers = confirm("To include numbers, press 'OK'");
+  const hasSpecialCharacters = confirm(
+    "To include special characters, press 'OK'"
+  );
 
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lower = "abcdefghijklmnopqrstuvwxyz";
   const numbers = "0123456789";
   const special = "!@,#$%&*{}[]/\\+=";
 
-  //Validate password criteria
-  if (!hasUpper && !hasLower && !hasNumbers && !hasSpecial) {
+  if (!hasUpperCase && !hasLowerCase && !hasNumbers && !hasSpecialCharacters) {
     alert("You must at least select 1 character type!");
     return generatePassword();
   }
   const chosenCharacters = [];
-  if (hasLower) {
+  if (hasLowerCase) {
     chosenCharacters[0] = lower;
   }
-  if (hasUpper) {
+  if (hasUpperCase) {
     chosenCharacters[1] = upper;
   }
   if (hasNumbers) {
     chosenCharacters[2] = numbers;
   }
-  if (hasSpecial) {
+  if (hasSpecialCharacters) {
     chosenCharacters[3] = special;
   }
   console.log(chosenCharacters);
   return chosenCharacters;
 };
+
+const createRandomPassword = (length, chosenValues) => {
+  let result = "";
+  let text = chosenValues.toString();
+  for (var i = 0; i < length; i++) {
+    result += text.charAt(Math.floor(Math.random() * text.length));
+  }
+  console.log(result);
+  return result;
+};
+
+// main function to generate the random password
+const generatePassword = () => {
+  // get the password length
+  const passwordLength = getPasswordLength();
+
+  // get the password criteria
+  const passwordCriteria = getPasswordCriteria();
+
+  // create random password
+  const password = createRandomPassword(passwordLength, passwordCriteria);
+
+  return password;
+};
+
+// Write password to the #password input
+const writePassword = () => {
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+};
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
