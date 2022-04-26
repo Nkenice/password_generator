@@ -3,75 +3,54 @@ const generateBtn = document.querySelector("#generate");
 
 //Get password length
 const getPasswordLength = () => {
-  const length = prompt("Choose password length");
-  if (length == null || length == "") {
+  const len = prompt("Enter your preferred password length");
+  if (len == null || len == "") {
     alert("Field can't be empty");
     getPasswordLength();
   }
-  if (isNaN(length)) {
-    alert("please enter a number!");
+  if (isNaN(len)) {
+    alert("You must input a number!");
     getPasswordLength();
   }
-  if (length < 8 || length > 128) {
-    alert("Choose a number between 8 and 128");
+  if (len < 8 || len > 128) {
+    alert("length should be between 8 and 128");
     getPasswordLength();
   }
-  console.log(length);
-  return length;
+  console.log(len);
+  return len;
 };
 
+//Password Criteria
+const getPasswordCriteria = () => {
+  //ask user to confirm their password
+  const hasUpper = confirm("To include uppercase, press 'OK'?");
+  const hasLower = confirm("To include lower case, press 'OK'?");
+  const hasNumbers = confirm("To include numbers, press 'OK'?");
+  const hasSpecial = confirm("To include special characters, press 'OK'?");
 
-  //Criteria Values  
-  const lowercaseLetters = ["abcdefghijklmnopqrstuvwxyz"];
-  const uppercaseLetters = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-  const numbers = ["0123456789"];
-  const specialCharacters = ["!#$%&'()*+,-./:;<=>?@[]^_`{|}~`"];
-  const passwordValue='';
+  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lower = "abcdefghijklmnopqrstuvwxyz";
+  const numbers = "0123456789";
+  const special = "!@,#$%&*{}[]/\\+=";
 
-  // Write password to the #password input
-// function enterpassword() {
-//   const password = generatepassword;
-//   const passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }  
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword)
-
-function generatePassword() {
-  // passwordLength
-  const getPasswordLength = prompt("Please choose a number between 8 and 128)");
-
-    //Create object of array to store the true / false based on teh user input
-    const password = [
-      { lowerCase: confirm("Add Lowercase?") },
-
-      { upperCase: confirm("Add Uppercase?") },
-
-      { Number: confirm("Add Number?") },
-
-      { specialCharacter: confirm("Add Special Character?") },
-    ];
-
-    const createRandomPassword = () => {
-      return createRandomPassword
-    };
-    
-    // main function to generate the random password
-    const generatePassword = () => {
-      passwordValue='';
-      /* // get the password length
-      const passwordLength = getPasswordLength();
-    
-      // get the password criteria
-      const passwordCriteria = getPasswordCriteria();
-    
-      // create random password
-      const password = createRandomPassword(passwordLength, passwordCriteria);
-    
-      return password; */
-    
-     
-    
-    // Add event listener to generate button
-    generateBtn.addEventListener("click", writePassword);
+  //Validate password criteria
+  if (!hasUpper && !hasLower && !hasNumbers && !hasSpecial) {
+    alert("You must at least select 1 character type!");
+    return generatePassword();
+  }
+  const chosenCharacters = [];
+  if (hasLower) {
+    chosenCharacters[0] = lower;
+  }
+  if (hasUpper) {
+    chosenCharacters[1] = upper;
+  }
+  if (hasNumbers) {
+    chosenCharacters[2] = numbers;
+  }
+  if (hasSpecial) {
+    chosenCharacters[3] = special;
+  }
+  console.log(chosenCharacters);
+  return chosenCharacters;
+};
