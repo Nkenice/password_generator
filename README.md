@@ -19,5 +19,5 @@ javascript
 ![invalid password length ](/Assets/images/invalid_password_lenght.jpg)
 ![lower case](/Assets/images/include_lowercase.jpg)
 ![numbers](/Assets/images/include_numbers.jpg)
-![Special characters ](/Assets/images/include_special_character.jpg)
+![Special characters ](/Assets/images/include_special_characters.jpg)
 ![Generated password](/Assets/images/include_uppercase.jpg)
