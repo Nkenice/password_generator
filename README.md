@@ -2,9 +2,14 @@
 
 Generating random password using HTML, CSS and Javascript
 
-## Decription
+# Description
 
 A user clicks on "Generate password" and is prompted to enter password length, followed by other criteria. When all conditions are met, a password is generated accordingly, else there will be alerts as seen in the images below.
+
+# URL
+
+https://nkenice.github.io/password_generator/
+https://github.com/Nkenice/password_generator/tree/dev
 
 # Technologies
 
@@ -12,7 +17,7 @@ html
 csss
 javascript
 
-## screenshots
+# Screenshots
 
 ![password generator](/Assets/images/password_generator.jpg)
 ![password length](/Assets/images/enter_password_length.jpg)
