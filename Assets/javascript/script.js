@@ -16,7 +16,6 @@ const getPasswordLength = () => {
     alert("please choose a number between 8 and 128");
     getPasswordLength();
   }
-  console.log(length);
   return length;
 };
 
@@ -52,7 +51,6 @@ const getPasswordCriteria = () => {
   if (hasSpecialCharacters) {
     chosenCharacters[3] = special;
   }
-  console.log(chosenCharacters);
   return chosenCharacters;
 };
 
@@ -62,7 +60,6 @@ const createRandomPassword = (length, chosenValues) => {
   for (var i = 0; i < length; i++) {
     result += text.charAt(Math.floor(Math.random() * text.length));
   }
-  console.log(result);
   return result;
 };
 
